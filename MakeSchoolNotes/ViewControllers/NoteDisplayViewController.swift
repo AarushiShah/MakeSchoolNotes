@@ -63,7 +63,7 @@ class NoteDisplayViewController: UIViewController {
         
         keyboardNotificationHandler!.keyboardWillBeShownHandler = { (height: CGFloat) in
             UIView.animateWithDuration(0.3) {
-                self.toolbarBottomSpace.constant = height
+                self.toolbarBottomSpace.constant = -height
                 self.view.layoutIfNeeded()
             }
         }

@@ -169,16 +169,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0b-ZR-lry">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="trash" id="A49-ba-AMo">
-                                        <connections>
-                                            <segue destination="Aga-LK-7D2" kind="unwind" identifier="Trash" unwindAction="unwindToSegue:" id="e0q-DD-QAd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yqM-6r-QO7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="613"/>
                                 <subviews>
@@ -209,6 +199,16 @@
                                     <constraint firstAttribute="trailing" secondItem="uJb-76-7wh" secondAttribute="trailing" constant="20" id="pz1-WZ-qxI"/>
                                 </constraints>
                             </scrollView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0b-ZR-lry">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="trash" id="A49-ba-AMo">
+                                        <connections>
+                                            <segue destination="Aga-LK-7D2" kind="unwind" identifier="Trash" unwindAction="unwindToSegue:" id="e0q-DD-QAd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -224,6 +224,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="contentTextView" destination="uJb-76-7wh" id="tec-dq-ysY"/>
+                        <outlet property="deleteButton" destination="A49-ba-AMo" id="j97-1P-yTo"/>
                         <outlet property="titleTextField" destination="jNC-vV-F6g" id="V6Z-UO-h2L"/>
                         <outlet property="toolbarBottomSpace" destination="sYl-mE-TST" id="sq9-lu-ZxU"/>
                     </connections>
