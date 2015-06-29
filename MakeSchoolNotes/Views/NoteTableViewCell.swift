@@ -21,7 +21,7 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel:UILabel!
     
-    var note: Note? {
+    var note: Note? { //confused
         didSet {
             if let note = note, titleLabel = titleLabel, dateLabel = dateLabel {
                 self.titleLabel.text = note.title

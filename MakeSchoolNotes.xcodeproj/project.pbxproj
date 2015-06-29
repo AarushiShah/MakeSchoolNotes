@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E764E9A1B3CAE3F009578D3 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E764E991B3CAE3F009578D3 /* NewNoteViewController.swift */; };
+		4E764E9E1B3D0AB1009578D3 /* NoteDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E764E9D1B3D0AB1009578D3 /* NoteDisplayViewController.swift */; };
 		5B7FD42E1B189D2C0088C25E /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FD4291B189D2C0088C25E /* StyleConstants.swift */; };
 		5B7FD42F1B189D2C0088C25E /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FD42C1B189D2C0088C25E /* NotesViewController.swift */; };
 		5B7FD4331B18A15D0088C25E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FD4321B18A15D0088C25E /* Note.swift */; };
@@ -81,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		4E764E991B3CAE3F009578D3 /* NewNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		4E764E9D1B3D0AB1009578D3 /* NoteDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDisplayViewController.swift; sourceTree = "<group>"; };
 		5B7FD4291B189D2C0088C25E /* StyleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
 		5B7FD42C1B189D2C0088C25E /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		5B7FD4321B18A15D0088C25E /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Entities/Note.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				5B7FD42C1B189D2C0088C25E /* NotesViewController.swift */,
 				4E764E991B3CAE3F009578D3 /* NewNoteViewController.swift */,
+				4E764E9D1B3D0AB1009578D3 /* NoteDisplayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				5B7FD42F1B189D2C0088C25E /* NotesViewController.swift in Sources */,
 				5B7FD4351B18A1FC0088C25E /* NoteTableViewCell.swift in Sources */,
 				5B7FD4331B18A15D0088C25E /* Note.swift in Sources */,
+				4E764E9E1B3D0AB1009578D3 /* NoteDisplayViewController.swift in Sources */,
 				4E764E9A1B3CAE3F009578D3 /* NewNoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

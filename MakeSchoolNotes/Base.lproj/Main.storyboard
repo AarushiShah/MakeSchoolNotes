@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5P2-fx-Fqc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dashboard-->
@@ -16,9 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="122" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vyT-so-Oa6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="122" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vyT-so-Oa6">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="sQf-98-1Zz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="CLt-16-2fF" id="KOg-lO-AQG"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="122" id="uNN-Pj-S6R" customClass="NoteTableViewCell" customModule="MakeSchoolNotes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -49,11 +58,24 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3rq-me-LIZ" firstAttribute="top" secondItem="vyT-so-Oa6" secondAttribute="bottom" id="Us6-v9-gAo"/>
+                            <constraint firstItem="vyT-so-Oa6" firstAttribute="leading" secondItem="poT-Qu-LRL" secondAttribute="leadingMargin" constant="-16" id="iWP-z4-xrF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vyT-so-Oa6" secondAttribute="trailing" constant="-16" id="lFo-H2-vTK"/>
+                            <constraint firstItem="vyT-so-Oa6" firstAttribute="top" secondItem="poT-Qu-LRL" secondAttribute="topMargin" id="r2X-bi-Psk"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Dashboard" id="m7W-J0-R60"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="m7W-J0-R60">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="wtP-LY-dCO">
+                            <connections>
+                                <segue destination="PsR-62-hS5" kind="show" identifier="Add" id="pLP-nb-rXJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="sQf-98-1Zz" id="BY4-u1-Zox"/>
                         <outlet property="tableView" destination="vyT-so-Oa6" id="Tnk-4H-hXb"/>
-                        <segue destination="N6a-WT-6Uj" kind="show" id="6vL-yj-QiV"/>
+                        <segue destination="9s6-ij-ukv" kind="show" identifier="ShowExistingNote" id="bEi-cO-a4Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqb-43-s5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,12 +93,35 @@
                     <view key="view" contentMode="scaleToFill" id="UAH-Fa-WhE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxc-Pz-gm1">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <connections>
+                                    <segue destination="9s6-ij-ukv" kind="embed" identifier="ShowNewNote" id="YrN-yT-Ahl"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="PrG-0H-ce7" userLabel="Add New Note">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FEE-g4-zQy">
+                            <connections>
+                                <segue destination="aFu-6Q-dG5" kind="unwind" identifier="Cancel" unwindAction="unwindToSegue:" id="UcF-Hr-V2W"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kBX-Ga-Im8">
+                            <connections>
+                                <segue destination="aFu-6Q-dG5" kind="unwind" identifier="Save" unwindAction="unwindToSegue:" id="XDe-ee-27l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aE0-Vm-YVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="aFu-6Q-dG5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1769" y="503"/>
+            <point key="canvasLocation" x="2806" y="513"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aVg-hh-DIK">
@@ -94,5 +139,102 @@
             </objects>
             <point key="canvasLocation" x="376" y="503"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Va-3t-aCy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PsR-62-hS5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5U-lZ-YMk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N6a-WT-6Uj" kind="relationship" relationship="rootViewController" id="n48-sZ-BLB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gsK-Vp-aVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2032" y="513"/>
+        </scene>
+        <!--Note Display View Controller-->
+        <scene sceneID="bhC-VS-hI3">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9s6-ij-ukv" userLabel="Note Display View Controller" customClass="NoteDisplayViewController" customModule="MakeSchoolNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zMm-fF-DdI"/>
+                        <viewControllerLayoutGuide type="bottom" id="H9d-cs-mAg"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="d1V-Vb-2uF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0b-ZR-lry">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="trash" id="A49-ba-AMo">
+                                        <connections>
+                                            <segue destination="Aga-LK-7D2" kind="unwind" identifier="Trash" unwindAction="unwindToSegue:" id="e0q-DD-QAd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yqM-6r-QO7">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="613"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNC-vV-F6g">
+                                        <rect key="frame" x="15" y="27" width="560" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJb-76-7wh" customClass="TextView" customModule="ConvenienceKit">
+                                        <rect key="frame" x="20" y="71" width="560" height="354"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="354" id="L8y-ZN-hfA"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jNC-vV-F6g" secondAttribute="trailing" constant="25" id="7h4-9Y-7tr"/>
+                                    <constraint firstItem="uJb-76-7wh" firstAttribute="top" secondItem="jNC-vV-F6g" secondAttribute="bottom" constant="14" id="GCY-GM-TGJ"/>
+                                    <constraint firstItem="jNC-vV-F6g" firstAttribute="top" secondItem="yqM-6r-QO7" secondAttribute="top" constant="27" id="IIm-GT-iMH"/>
+                                    <constraint firstItem="uJb-76-7wh" firstAttribute="centerX" secondItem="yqM-6r-QO7" secondAttribute="centerX" id="TQr-xk-M5A"/>
+                                    <constraint firstAttribute="bottom" secondItem="uJb-76-7wh" secondAttribute="bottom" constant="188" id="UFh-fW-ldP"/>
+                                    <constraint firstItem="jNC-vV-F6g" firstAttribute="leading" secondItem="yqM-6r-QO7" secondAttribute="leading" constant="15" id="Uzq-mv-k5h"/>
+                                    <constraint firstItem="uJb-76-7wh" firstAttribute="leading" secondItem="yqM-6r-QO7" secondAttribute="leading" constant="20" id="eO1-eZ-GoI"/>
+                                    <constraint firstAttribute="trailing" secondItem="uJb-76-7wh" secondAttribute="trailing" constant="20" id="pz1-WZ-qxI"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="F0b-ZR-lry" secondAttribute="trailing" id="3DU-5Q-k5I"/>
+                            <constraint firstItem="yqM-6r-QO7" firstAttribute="trailing" secondItem="F0b-ZR-lry" secondAttribute="trailing" id="Hia-47-0i0"/>
+                            <constraint firstItem="F0b-ZR-lry" firstAttribute="leading" secondItem="d1V-Vb-2uF" secondAttribute="leading" id="OML-1M-mxq"/>
+                            <constraint firstItem="yqM-6r-QO7" firstAttribute="top" secondItem="zMm-fF-DdI" secondAttribute="bottom" id="Z64-yM-96a"/>
+                            <constraint firstItem="yqM-6r-QO7" firstAttribute="leading" secondItem="F0b-ZR-lry" secondAttribute="leading" id="nc3-jv-PnT"/>
+                            <constraint firstItem="F0b-ZR-lry" firstAttribute="bottom" secondItem="H9d-cs-mAg" secondAttribute="top" id="sYl-mE-TST"/>
+                            <constraint firstAttribute="bottom" secondItem="yqM-6r-QO7" secondAttribute="bottom" constant="-121" id="xzr-jT-NqE"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="contentTextView" destination="uJb-76-7wh" id="tec-dq-ysY"/>
+                        <outlet property="titleTextField" destination="jNC-vV-F6g" id="V6Z-UO-h2L"/>
+                        <outlet property="toolbarBottomSpace" destination="sYl-mE-TST" id="sq9-lu-ZxU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mtE-F5-g08" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Aga-LK-7D2" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="-423"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bEi-cO-a4Z"/>
+    </inferredMetricsTieBreakers>
 </document>

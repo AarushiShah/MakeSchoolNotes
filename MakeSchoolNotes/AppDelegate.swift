@@ -9,12 +9,26 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {//this code is essential, and is run before ANY other code is run, even the view controllers
+    
+    //a mandatory delegate - anything that happens when your app opens or closes, etc. Global behavior of you app system
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        UINavigationBar.appearance().barTintColor = StyleConstants.defaultBlueColor
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().translucent = false
+        
+        UIToolbar.appearance().barTintColor = StyleConstants.defaultBlueColor
+        UIToolbar.appearance().tintColor = UIColor.whiteColor()
+        UIToolbar.appearance().translucent = false
+        
+        return true
+        
         // Override point for customization after application launch.
         
         return true
